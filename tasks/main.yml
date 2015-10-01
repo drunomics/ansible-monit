@@ -1,7 +1,12 @@
 ---
 # tasks file for ansible-monit
 - include: debian.yml
+  tags:
+    - monit
   when: ansible_os_family == "Debian"
 
 - include: config_monit.yml
+  tags:
+    - config_monit
+    - monit
   when: config_monit is defined and config_monit

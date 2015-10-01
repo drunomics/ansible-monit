@@ -20,7 +20,7 @@ check process {{ item.name }}
 {%   endif %}
 {%   if item.failed_host_type is defined and item.failed_host_protocol is defined %}
 {%     for type in item.failed_host_type %}
-    if failed host {{ item.failed_host }} port {{ item.failed_host_port }} type {{ type }} protocol {{ item.protocol }} then {{ item.alert | default('restart') }}
+    if failed host {{ item.failed_host }} port {{ item.failed_host_port }} type {{ type }} protocol {{ item.failed_host_protocol }} then {{ item.alert | default('restart') }}
 {%     endfor %}
     if 5 restarts within 5 cycles then timeout
 {%   endif %}

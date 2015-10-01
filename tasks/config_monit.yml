@@ -1,10 +1,10 @@
 ---
 - name: config_monit | configuring monit
-  template: src=templates/etc/monit/monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode=0700
+  template: src=etc/monit/monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode=0700
   notify: restart monit
 
 - name: config_monit | configuring monitored services
-  template: src=templates/etc/monit/conf.d/monitor.j2 dest=/etc/monit/conf.d/{{ item.name }} owner=root group=root mode=0644
+  template: src=etc/monit/conf.d/monitor.j2 dest=/etc/monit/conf.d/{{ item.name }} owner=root group=root mode=0644
   notify: reload monit
   with_items: monit_monitor_services
   when: item.monitored is defined and item.monitored

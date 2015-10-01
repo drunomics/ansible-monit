@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 # Monitor {{ item.name }} and restart if not running, also restart
-check process {{ item.name }}{% item.pidfile is defined %} with pidfile {{ item.pidfile }}{% endif %}
+check process {{ item.name }}{% if item.pidfile is defined %} with pidfile {{ item.pidfile }}{% endif %}
 {% if item.start_program is defined %}
     start program = "{{ item.start_program }}"
 {% endif %}

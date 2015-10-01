@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+# Monitor {{ item.name }} and restart if not running, also restart
+check process {{ item.name }} with pidfile {{ item.pidfile }}
+{% if item.start_program is defined %}
+    start program = "{{ item.start_program }}"
+{% endif %}
+{% if item.stop_program is defined %}
+    stop program = "{{ item.stop_program }}"
+{% endif %}
+{% if item.failed_host is defined and item.failed_host_port is defined %}
+    if failed host {{ item.failed_host }} port {{ item.failed_host_port }} then restart
+    if 5 restarts within 5 cycles then timeout
+{% endif %}
+{% if item.cpu_checks is defined %}
+{%   for check in item.cpu_checks %}
+    if {{ check.name }} is greater than {{ check.percentage }} for {{ check.cycles }} cycles then {{ check.action }}
+{%   endfor %}
+{% endif %}

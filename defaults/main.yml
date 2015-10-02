@@ -6,6 +6,7 @@ monit_email_to: root@localhost
 monit_email_server: localhost
 monit_enable_email_notifications: false  #defines if monit email notifications are to be sent.
 monit_enable_web_server: false  #defines if monit web server is enabled.
+monit_monitor_services:  #default for all nodes if not specific settings for node groups
   - name: apache2
 #    cpu_checks:
 #      - name: cpu

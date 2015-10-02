@@ -7,6 +7,11 @@ check process {{ item.name }}
 {% if item.pidfile is defined %}
     with pidfile {{ item.pidfile }}
 {% endif %}
+{% if item.groups is defined %}
+{%   for group in item.groups %}
+    group {{ group }}
+{%   endfor %}
+{% endif %}
 {% if item.start_program is defined %}
     start program = "{{ item.start_program }}"
 {% endif %}

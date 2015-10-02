@@ -15,6 +15,7 @@ Role Variables
 ---
 # defaults file for ansible-monit
 config_monit: false  #defines if monit should be configured after installed
+monit_alerts_to_syslog: false  #defines if monit should send alerts to syslog...if false the default is /var/log/monit.log
 monit_email_from: monit@$HOST
 monit_email_to: root@localhost
 monit_email_server: localhost

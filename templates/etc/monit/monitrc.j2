@@ -26,7 +26,12 @@
 ## a standalone log file instead, specify the full path to the log file
 #
 # set logfile syslog facility log_daemon
+{% if monit_alerts_to_syslog is defined and monit_alerts_to_syslog %}
+set logfile syslog facility log_daemon
+{% endif %}
+{% if (monit_alerts_to_syslog is defined and not monit_alerts_to_syslog)or monit_alerts_to_syslog is not defined %}
   set logfile /var/log/monit.log
+{% endif %}
 #
 #
 ## Set the location of the Monit id file which stores the unique id for the

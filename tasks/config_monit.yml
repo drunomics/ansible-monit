@@ -1,6 +1,6 @@
 ---
 - name: config_monit | configuring monit
-  template: src=etc/monit/monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode=0700
+  template: src=etc/monit/monitrc.j2 dest=/etc/monit/monitrc owner=root group=root mode=0600
   notify: restart monit
 
 - name: config_monit | configuring monitored services

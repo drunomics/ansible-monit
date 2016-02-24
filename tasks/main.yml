@@ -9,9 +9,3 @@
   tags:
     - monit
   when: ansible_os_family == "RedHat"
-
-- include: config_monit.yml
-  tags:
-    - config_monit
-    - monit
-  when: config_monit is defined and config_monit

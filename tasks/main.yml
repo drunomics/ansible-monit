@@ -5,6 +5,11 @@
     - monit
   when: ansible_os_family == "Debian"
 
+- include: centos.yml
+  tags:
+    - monit
+  when: ansible_os_family == "RedHat"
+
 - include: config_monit.yml
   tags:
     - config_monit

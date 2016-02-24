@@ -1,3 +1,5 @@
 ---
 - name: debian | installing monit
-  apt: name=monit state=present
+  apt:
+    name: "monit"
+    state: present
